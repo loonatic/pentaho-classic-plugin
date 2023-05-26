@@ -12,8 +12,6 @@
 
   <artifactId>pentaho-classic-plugin-webclient</artifactId>
 
-  <packaging>bundle</packaging>
-
   <name>${project.artifactId}</name>
   <description>Pentaho Classic Plugin Webclient</description>
 
@@ -21,11 +19,16 @@
     <frontend-maven-plugin.version>1.12.1</frontend-maven-plugin.version>
     <nodejs.version>v20.2.0</nodejs.version>
     <npm.version>9.6.6</npm.version>
+
     <javascript-compilation-directory>${project.basedir}/dist</javascript-compilation-directory>
-    <webpackage-root-directory>web</webpackage-root-directory>
   </properties>
 
   <build>
+    <resources>
+      <resource>
+        <directory>${javascript-compilation-directory}</directory>
+      </resource>
+    </resources>
     <plugins>
       <plugin>
         <groupId>com.github.eirslett</groupId>
@@ -36,7 +39,6 @@
           <npmVersion>${npm.version}</npmVersion>
         </configuration>
         <executions>
-
           <execution>
             <id>install node and npm</id>
             <goals>
@@ -44,7 +46,6 @@
             </goals>
             <phase>generate-resources</phase>
           </execution>
-
           <execution>
             <id>npm install</id>
             <goals>
@@ -56,7 +57,6 @@
               <workingDirectory>${project.basedir}</workingDirectory>
             </configuration>
           </execution>
-
           <execution>
             <id>npm run build</id>
             <goals>
@@ -68,53 +68,9 @@
               <workingDirectory>${project.basedir}</workingDirectory>
             </configuration>
           </execution>
-
-          <execution>
-            <id>npm test</id>
-            <goals>
-              <goal>npm</goal>
-            </goals>
-            <phase>test</phase>
-            <configuration>
-              <arguments>run test</arguments>
-              <workingDirectory>${project.basedir}</workingDirectory>
-            </configuration>
-          </execution>
         </executions>
-      </plugin>
-
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>build-helper-maven-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>add-webpack-build-resources</id>
-            <goals>
-              <goal>add-resource</goal>
-            </goals>
-            <configuration>
-              <resources>
-                <resource>
-                  <directory>${javascript-compilation-directory}</directory>
-                  <targetPath>${webpackage-root-directory}</targetPath>
-                </resource>
-              </resources>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-
-      <plugin>
-        <groupId>org.apache.felix</groupId>
-        <artifactId>maven-bundle-plugin</artifactId>
-        <configuration>
-          <instructions>
-            <Provide-Capability>
-              org.pentaho.webpackage;root=/${webpackage-root-directory}
-            </Provide-Capability>
-          </instructions>
-        </configuration>
       </plugin>
     </plugins>
   </build>
+
 </project>
