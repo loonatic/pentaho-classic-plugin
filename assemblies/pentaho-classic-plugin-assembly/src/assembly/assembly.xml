@@ -1,0 +1,177 @@
+<assembly xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.3"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.3 http://maven.apache.org/xsd/assembly-1.1.3.xsd">
+
+  <id>paz-plugin</id>
+  <formats>
+    <format>zip</format>
+  </formats>
+  <baseDirectory>analyzer</baseDirectory>
+
+  <moduleSets>
+    <moduleSet>
+
+      <!-- Enable access to all projects in the current multi-module build! -->
+      <useAllReactorProjects>true</useAllReactorProjects>
+
+      <!-- Now, select which projects to include in this module-set. -->
+      <includes>
+        <include>pentaho:pentaho-analyzer-core</include>
+        <include>pentaho:pentaho-analyzer-xsd</include>
+      </includes>
+      <sources>
+        <includeModuleDirectory>false</includeModuleDirectory>
+        <fileSets>
+          <fileSet>
+            <directory>${project.build.directory}</directory>
+            <outputDirectory>lib</outputDirectory>
+            <includes>
+              <include>pentaho-analyzer-core-*${jar.classifier}*</include>
+              <include>pentaho-analyzer-xsd-*</include>
+            </includes>
+            <excludes>
+              <exclude>*sources*</exclude>
+              <exclude>*.map</exclude>
+              <exclude>pentaho-analyzer-xsd*tests.jar</exclude>
+            </excludes>
+          </fileSet>
+        </fileSets>
+      </sources>
+    </moduleSet>
+
+    <moduleSet>
+
+      <!-- Enable access to all projects in the current multi-module build! -->
+      <useAllReactorProjects>true</useAllReactorProjects>
+
+      <!-- Now, select which projects to include in this module-set. -->
+      <includes>
+        <include>pentaho:pentaho-analyzer-client</include>
+      </includes>
+
+      <!-- put select resources in the assembled zip at the root dir -->
+      <sources>
+        <includeModuleDirectory>false</includeModuleDirectory>
+        <fileSets>
+          <fileSet>
+            <directory>src/main/resources</directory>
+            <outputDirectory></outputDirectory>
+            <includes>
+              <include>**</include>
+            </includes>
+            <excludes>
+              <exclude>help/**/*.html</exclude>
+              <exclude>help/**/*.css</exclude>
+            </excludes>
+          </fileSet>
+
+          <fileSet>
+            <filtered>true</filtered>
+            <directory>src/main/resources</directory>
+            <includes>
+              <include>help/**/*.html</include>
+              <include>help/**/*.css</include>
+            </includes>
+          </fileSet>
+
+          <!-- get the compressed files into the assembly -->
+          <fileSet>
+            <directory>${project.build.directory}/build-javascript/analyzer</directory>
+            <outputDirectory>scripts/compressed</outputDirectory>
+            <includes>
+              <!-- bundles -->
+              <include>analyzer-editor.js</include>
+              <include>analyzer-selectSchema.js</include>
+              <include>analyzer-viewer.js</include>
+              <include>API.js</include>
+              <include>cv_api.js</include>
+              <include>oss-module.js</include>
+              <!-- others not bundled -->
+              <include>visual/config.helper.js</include>
+              <include>viz-plugins.js</include>
+            </includes>
+          </fileSet>
+
+          <!-- get any files that were not included in a compressed file and include them in the scripts folder-->
+          <fileSet>
+            <directory>${project.build.directory}/build-javascript/analyzer</directory>
+            <outputDirectory>scripts</outputDirectory>
+            <includes>
+              <include>analyzer-require-js-cfg.js</include>
+              <include>analyzer-require-js-bundles-cfg.js</include>
+              <include>visual/config.js</include>
+              <include>api_examples/**</include>
+              <include>widget/**</include>
+              <include>report/**</include>
+            </includes>
+          </fileSet>
+
+          <!-- get the needed gwt-widgets stuff-->
+          <fileSet>
+            <directory>${project.build.directory}/dependency</directory>
+            <outputDirectory>scripts</outputDirectory>
+            <includes>
+              <include>filechooser/**</include>
+              <include>formatter/**</include>
+              <include>schedulingdialogs/**</include>
+            </includes>
+          </fileSet>
+
+          <!-- The old ant-built plugin has require.js in the compressed folder, so we will do it here too -->
+          <fileSet>
+            <directory>${project.build.directory}/src-javascript</directory>
+            <outputDirectory>scripts/compressed</outputDirectory>
+            <includes>
+              <include>require.js</include>
+            </includes>
+          </fileSet>
+
+          <!--
+            Include uncompressed js sources (or not, depending on the properties defined).
+            All js source files will be excluded by default, unless the keep-original-js
+            profile is activated, then all js source will be included (none excluded)
+           -->
+          <fileSet>
+            <directory>${basedir}/src/main/javascript/scripts</directory>
+            <outputDirectory>scripts</outputDirectory>
+            <includes>
+              <include>${js.includes}</include>
+            </includes>
+            <excludes>
+              <exclude>${js.excludes}</exclude>
+            </excludes>
+          </fileSet>
+
+        </fileSets>
+      </sources>
+    </moduleSet>
+  </moduleSets>
+
+  <fileSets>
+    <fileSet>
+      <directory>src/main/resources</directory>
+      <outputDirectory></outputDirectory>
+      <includes>
+        <include>*.xml</include>
+        <include>*.properties</include>
+        <include>OSGI-INF/**</include>
+      </includes>
+      <filtered>true</filtered>
+    </fileSet>
+  </fileSets>
+
+  <dependencySets>
+    <dependencySet>
+      <outputDirectory>lib</outputDirectory>
+      <scope>runtime</scope>
+      <useTransitiveDependencies>false</useTransitiveDependencies>
+      <includes>
+        <include>*:jar:*</include>
+      </includes>
+      <excludes>
+        <exclude>*:sources</exclude>
+      </excludes>
+    </dependencySet>
+  </dependencySets>
+
+</assembly>

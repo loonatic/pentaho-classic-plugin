@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.pentaho</groupId>
+    <artifactId>pentaho-ee-jar-parent-pom</artifactId>
+    <version>9.6.0.0-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>pentaho-classic-plugin</artifactId>
+  <version>9.6.0.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <name>${project.artifactId}</name>
+  <description>Parent pom for pentaho-classic-plugin</description>
+  <url>http://www.pentaho.com</url>
+
+  <modules>
+    <module>webclient</module>
+    <module>assemblies</module>
+  </modules>
+
+  <properties>
+    <itext.version>2.1.7</itext.version>
+    <jug-lgpl.version>2.0.0</jug-lgpl.version>
+    <pentaho-cdf-plugin.version>9.6.0.0-SNAPSHOT</pentaho-cdf-plugin.version>
+    <version.for.license>${project.version}</version.for.license>
+    <activation.version>1.0.2</activation.version>
+    <pentaho-actionsequence-dom.version>9.6.0.0-SNAPSHOT</pentaho-actionsequence-dom.version>
+    <commons-xul.version>9.6.0.0-SNAPSHOT</commons-xul.version>
+    <junit.version>4.12</junit.version>
+    <pentaho-connections.version>9.6.0.0-SNAPSHOT</pentaho-connections.version>
+    <jaxb-impl.version>2.1.2</jaxb-impl.version>
+    <weka.version>3.8.5</weka.version>
+    <poi.version>4.1.1</poi.version>
+    <commons-math3.version>3.6.1</commons-math3.version>
+    <curvesapi.version>1.06</curvesapi.version>
+    <commons-compress.version>1.20</commons-compress.version>
+    <eula-wrap_attach-dist-phase></eula-wrap_attach-dist-phase>
+    <pentaho-ccc-plugin.version>9.6.0.0-SNAPSHOT</pentaho-ccc-plugin.version>
+    <selenium.version>1.0.1</selenium.version>
+    <eula.wrap.phase></eula.wrap.phase>
+    <platform.version>9.6.0.0-SNAPSHOT</platform.version>
+    <pentaho-modeler.version>9.6.0.0-SNAPSHOT</pentaho-modeler.version>
+    <jaxen.version>1.1</jaxen.version>
+    <javax.servlet.servlet-api.version>2.3</javax.servlet.servlet-api.version>
+    <eula-wrap_create-izpack-installer-jar-phase></eula-wrap_create-izpack-installer-jar-phase>
+    <pentaho-ee-dsc.version>9.6.0.0-SNAPSHOT</pentaho-ee-dsc.version>
+    <mondrian.version>9.6.0.0-SNAPSHOT</mondrian.version>
+    <eula-wrap_assign-deps-to-properties-phase></eula-wrap_assign-deps-to-properties-phase>
+    <mail.version>1.6.1</mail.version>
+    <xmlunit.version>2.2.1</xmlunit.version>
+    <jar.classifier>jar</jar.classifier>
+    <icu4j.version>54.1.1</icu4j.version>
+    <jaxb-api.version>2.1</jaxb-api.version>
+    <jsr173_api.version>1.0</jsr173_api.version>
+    <org.json.version>20080701</org.json.version>
+    <pentaho-metadata.version>9.6.0.0-SNAPSHOT</pentaho-metadata.version>
+    <xmlbeans.version>3.1.0</xmlbeans.version>
+    <mockito-all.version>1.8.5</mockito-all.version>
+    <commons-database.version>9.6.0.0-SNAPSHOT</commons-database.version>
+    <subethasmtp.version>2.1.0</subethasmtp.version>
+    <license.header.file>license/templates/licenseHeader.txt</license.header.file>
+    <license-maven-plugin.version>2.3</license-maven-plugin.version>
+    <hibernate.version>3.2.6.ga</hibernate.version>
+    <failIfNoTests>false</failIfNoTests>
+    <license.inception.year>2002</license.inception.year>
+    <commons-beanutils.version>1.9.3</commons-beanutils.version>
+    <jaxb-xjc.version>${jaxb-impl.version}</jaxb-xjc.version>
+    <cglib-nodep.version>2.1_3</cglib-nodep.version>
+    <commons-collections4.version>4.4</commons-collections4.version>
+    <commons-gwt.version>9.6.0.0-SNAPSHOT</commons-gwt.version>
+    <commons-lang.version>2.6</commons-lang.version>
+    <pentaho-geo-plugin.version>9.6.0.0-SNAPSHOT</pentaho-geo-plugin.version>
+    <properties-maven-plugin.version>1.0.0</properties-maven-plugin.version>
+    <common-ui.version>9.6.0.0-SNAPSHOT</common-ui.version>
+    <encoder.version>1.2</encoder.version>
+    <mysql-connector-java.version>5.1.32</mysql-connector-java.version>
+    <eula-wrap_create-dist-phase></eula-wrap_create-dist-phase>
+    <js.sources.available>true</js.sources.available>
+  </properties>
+
+</project>

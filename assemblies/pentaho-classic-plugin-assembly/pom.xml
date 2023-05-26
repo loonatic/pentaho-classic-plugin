@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.pentaho</groupId>
+    <artifactId>pentaho-classic-plugin-assemblies</artifactId>
+    <version>9.6.0.0-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>pentaho-classic-plugin-assembly</artifactId>
+  <version>9.6.0.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <properties>
+    <eula-wrap_create-dist-phase>verify</eula-wrap_create-dist-phase>
+    <eula-wrap_assign-deps-to-properties-phase>initialize</eula-wrap_assign-deps-to-properties-phase>
+    <eula-wrap_create-izpack-installer-jar-phase>verify</eula-wrap_create-izpack-installer-jar-phase>
+    <maven-antrun-plugin.version>1.7</maven-antrun-plugin.version>
+    <eula-wrap_attach-dist-phase>verify</eula-wrap_attach-dist-phase>
+  </properties>
+
+  <build>
+    <resources>
+      <resource>
+        <filtering>true</filtering>
+        <directory>src/main/resources</directory>
+        <includes>
+          <include>*.xml</include>
+          <include>*.properties</include>
+        </includes>
+      </resource>
+    </resources>
+  </build>
+</project>
