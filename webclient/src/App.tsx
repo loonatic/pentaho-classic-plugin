@@ -1,5 +1,5 @@
 import "lib/i18n";
-import { BrowserRouter as Router } from "react-router-dom";
+import { HashRouter as Router } from "react-router-dom";
 import { HvProvider } from "@hitachivantara/uikit-react-core";
 import { Container } from "components/common";
 import { NavigationProvider } from "lib/context/NavigationContext";

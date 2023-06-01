@@ -6,6 +6,7 @@ import tsconfigPaths from "vite-tsconfig-paths";
 import react from "@vitejs/plugin-react";
 
 export default defineConfig({
+  base: "/pentaho/content/classicPlugin/webclient/",
   plugins: [
     react({
       jsxImportSource: "@emotion/react",
