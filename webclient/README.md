@@ -1,4 +1,4 @@
-# pentaho-uikit
+# uikit-app
 
 ## How to use
 

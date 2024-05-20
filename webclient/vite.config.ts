@@ -2,11 +2,15 @@
 /// <reference types="vitest" />
 
 import { defineConfig } from "vite";
-import tsconfigPaths from "vite-tsconfig-paths";
-import react from "@vitejs/plugin-react";
 
-export default defineConfig({
-  base: "/pentaho/content/classicPlugin/webclient/",
+import react from "@vitejs/plugin-react";
+import tsconfigPaths from "vite-tsconfig-paths";
+import unoCSS from "unocss/vite";
+import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
+
+import { HvAppShellVitePlugin } from "@hitachivantara/app-shell-vite-plugin";
+
+export default defineConfig(({ mode }) => ({
   plugins: [
     react({
       jsxImportSource: "@emotion/react",
@@ -14,16 +18,26 @@ export default defineConfig({
         plugins: ["@emotion/babel-plugin"],
       },
     }),
-    tsconfigPaths({ root: ".." }),
+    tsconfigPaths(),
+    unoCSS({ mode: "per-module" }),
+    cssInjectedByJsPlugin({
+      relativeCSSInjection: true,
+    }),
+    HvAppShellVitePlugin({
+      mode,
+      autoViewsAndRoutes: true,
+      autoMenu: true
+    }),
   ],
+
   test: {
     globals: true,
-    environment: "jsdom",
+    environment: "happy-dom",
     setupFiles: ["src/tests/setupTests.ts"],
     reporters: "default",
     coverage: {
       enabled: false, // disabled by default. run vitest with --coverage
-      provider: "c8",
+      provider: "v8",
       reporter: "lcov",
       include: ["src/**/*.ts?(x)"],
       exclude: [
@@ -36,4 +50,4 @@ export default defineConfig({
       ],
     },
   },
-});
+}));
