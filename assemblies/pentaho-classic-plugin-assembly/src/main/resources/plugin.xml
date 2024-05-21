@@ -2,9 +2,13 @@
 <plugin title="Classic Plugin" name="classicPlugin">
   <overlays>
     <overlay id="launch" resourcebundle="content/classicPlugin/resources/messages" priority="1">
-      <button id="classicPluginButton" label="${openClassicPlugin}" command="window.parent.parent.mantle_openTab('${tabName}', '${tabName}', 'content/classicPlugin/webclient/index.html')"/>
+      <button id="classicPluginButton" label="${openClassicPlugin}"
+              command="window.parent.parent.mantle_openTab('${tabName}', '${tabName}', 'content/classicPlugin/webclient/index.html')"/>
     </overlay>
   </overlays>
+  <perspective id="classicPlugin.perspective" title="${titleClassicPlugin}" layout-priority="10"
+               resourcebundle="content/classicPlugin/resources/messages"
+               content-url="content/classicPlugin/webclient/index.html"/>
   <external-resources/>
   <static-paths>
     <static-path url="/classicPlugin/resources" localFolder="resources"/>
