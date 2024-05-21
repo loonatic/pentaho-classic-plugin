@@ -3,7 +3,7 @@ import type { HvAppShellConfig } from "@hitachivantara/app-shell-vite-plugin";
 export default (): HvAppShellConfig => ({
   name: "uikit-app",
 
-  baseUrl: "/",
+  baseUrl: "/pentaho/content/classicPlugin/webclient/",
 
   header: {
     actions: [
@@ -22,6 +22,8 @@ export default (): HvAppShellConfig => ({
   },
 
   mainPanel: {
-    maxWidth: "xl"  },
+    maxWidth: "xl",
+    views: [{bundle: "@self/pages/Welcome.js", route: "/index.html"}]
+  },
 
 });
