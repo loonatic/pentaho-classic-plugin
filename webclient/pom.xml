@@ -35,6 +35,8 @@
         <artifactId>frontend-maven-plugin</artifactId>
         <version>${frontend-maven-plugin.version}</version>
         <configuration>
+          <nodeDownloadRoot>https://one.hitachivantara.com/artifactory/nodejs-generic-remote/</nodeDownloadRoot>
+          <npmDownloadRoot>https://one.hitachivantara.com/artifactory/npm-release/npm/-/</npmDownloadRoot>
           <nodeVersion>${nodejs.version}</nodeVersion>
           <npmVersion>${npm.version}</npmVersion>
         </configuration>
