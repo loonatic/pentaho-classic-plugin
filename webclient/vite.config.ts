@@ -25,8 +25,10 @@ export default defineConfig(({ mode }) => ({
     }),
     HvAppShellVitePlugin({
       mode,
-      autoViewsAndRoutes: true,
-      autoMenu: true
+      type: "bundle",
+      modules: [
+          "src/pages/Welcome",
+      ]
     }),
   ],
 

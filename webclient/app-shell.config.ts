@@ -1,29 +1,29 @@
-import type { HvAppShellConfig } from "@hitachivantara/app-shell-vite-plugin";
+import type {HvAppShellConfig} from "@hitachivantara/app-shell-vite-plugin";
 
 export default (): HvAppShellConfig => ({
-  name: "uikit-app",
+    name: "uikit-test-plugin",
 
-  baseUrl: "/pentaho/content/classicPlugin/webclient/",
+    baseUrl: "/",
 
-  header: {
-    actions: [
-      { bundle: "@hv/help-client/button.js",
-        config: { url: "https://www.hitachivantara.com/", description: "Hitachi Vantara Help Link" }
-      },
-      { bundle: "@hv/theming-client/colorModeSwitcher.js"      },
-      { bundle: "@hv/app-switcher-client/toggle.js",
-        config: { title: "Apps",
-									apps: [
-										{ label: "App 1", description: "Application 1", url: "#", target: "NEW" },
-										{ label: "App 2", description: "Application 2", url: "#", target: "SELF", icon: { iconType: "uikit", name: "Warehouse" } }
-									]}
-      }
-    ]
-  },
+    mainPanel: {
+        maxWidth: "xl",
+        views: [
+            {
+                bundle: "@self/pages/Welcome.js",
+                route: "/welcome"}
+        ]
+    },
 
-  mainPanel: {
-    maxWidth: "xl",
-    views: [{bundle: "@self/pages/Welcome.js", route: "/index.html"}]
-  },
+    menu: [
+        {label: "key_welcome", target: "/welcome"}
+    ],
 
+    translations: {
+        en: {
+            key_welcome: "Welcome"
+        },
+        pt: {
+            key_welcome: "Bem-Vindo"
+        }
+    }
 });

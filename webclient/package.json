@@ -1,5 +1,5 @@
 {
-  "name": "@hv-apps/uikit-app",
+  "name": "@hv-apps/uikit-test-plugin",
   "private": true,
   "type": "module",
   "scripts": {
@@ -20,9 +20,9 @@
     "@emotion/css": "^11.10.6",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
-    "@hitachivantara/uikit-react-core": "^5.24.2",
-    "@hitachivantara/uikit-react-icons": "^5.5.3",
-    "@hitachivantara/uikit-react-viz": "^5.6.0",
+    "@hitachivantara/uikit-react-core": "^5.66.5",
+    "@hitachivantara/uikit-react-icons": "^5.9.12",
+    "@hitachivantara/uikit-react-viz": "^5.13.3",
     "@mui/material": "^5.12.2",
     "i18next": "^23.7.8",
     "i18next-browser-languagedetector": "^7.0.1",
@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "@emotion/babel-plugin": "^11.10.6",
-    "@hitachivantara/app-shell-vite-plugin": "^1.0.0",
+    "@hitachivantara/app-shell-vite-plugin": "^1.4.7",
     "@hitachivantara/uikit-uno-preset": "^0.2.5",
     "@testing-library/jest-dom": "^6.1.5",
     "@testing-library/react": "^14.0.0",
