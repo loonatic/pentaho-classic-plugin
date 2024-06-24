@@ -1,0 +1,11 @@
+{
+  "id": "uikit-test-plugin",
+  "views": [
+    {
+      "bundle": "pages/Welcome.js",
+      "route": "/welcome"
+    }
+  ],
+  "headerActions": [],
+  "providers": []
+}
